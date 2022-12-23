@@ -12,8 +12,21 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'com.sikulix', name: 'sikulixapi', version: '2.0.5'
+    implementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    implementation 'io.cucumber:cucumber-junit:7.3.2'
+    implementation 'io.cucumber:cucumber-java:7.3.2'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 test {
     useJUnitPlatform()
 }
+
+gradle.startParameter.continueOnFailure=true
