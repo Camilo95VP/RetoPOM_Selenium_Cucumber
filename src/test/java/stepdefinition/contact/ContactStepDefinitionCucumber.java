@@ -29,7 +29,7 @@ public class ContactStepDefinitionCucumber extends SetupWebUI {
     private ContactModel contact;
 
     @Dado("que el usuario navegó al home principal del sitio web")
-    public void queElUsuarioNavegoAlHomePrincipalDelSitioWeb() {
+    public void navegarAlSitioWeb() {
         try{
             setUpLog4j2();
             setUpDriver(DEMO_WEB_SHOP_URL.getValue());
@@ -41,8 +41,8 @@ public class ContactStepDefinitionCucumber extends SetupWebUI {
     }
 
 
-    @Cuando("el usuario ingrese a la sección Contacto, suministre todos los datos y confirme la acción")
-    public void elUsuarioIngreseALaSeccionContactoSuministreTodosLosDatosYConfirmeLaAccion() {
+    @Cuando("el usuario ingrese a la sección Contacto y suministre todos los datos correctos")
+    public void ingresarALaSeccionContacto() {
         try{
             contact=contact();
             contactPageCases=new ContactPageCases(driver,contact);
@@ -55,8 +55,7 @@ public class ContactStepDefinitionCucumber extends SetupWebUI {
     }
 
     @Entonces("el sistema mostrará que se realizo la solicitud de contacto")
-    public void elSistemaMostraraQueSeRealizoLaSolicitudDeContacto() {
-
+    public void mostrarSolicitud() {
         try{
             Assertions.assertEquals(infoExpectedComplete(),contactPageCases.succesfullCOntactResult());
             quitDriver();
@@ -65,11 +64,10 @@ public class ContactStepDefinitionCucumber extends SetupWebUI {
             quitDriver();
             LOGGER.error(e.getMessage(), e);
         }
-
     }
 
-    @Cuando("el usuario ingrese a la sección Contacto, suministre los datos obligatorios, con email incorrecto y confirme la acción")
-    public void elUsuarioIngreseALaSeccionContactoSuministreLosDatosObligatoriosYConfirmeLaAccion() {
+    @Cuando("el usuario ingrese a la sección Contacto y suministre un email incorrecto")
+    public void suministrarEmailIncorrecto() {
         try{
             contact=contact();
             contactPageCases=new ContactPageCases(driver,contact);
@@ -82,8 +80,8 @@ public class ContactStepDefinitionCucumber extends SetupWebUI {
         }
     }
 
-    @Entonces("el sistema mostrará que se ingresó un email incorrecto")
-    public void elSistemaMostraraQueSeIngresoUnEmailIncorrecto() {
+    @Entonces("el sistema mostrará un mensaje de validación")
+    public void mostrarMensaje() {
         Assertions.assertEquals(infoExpectedEmailError(),contactPageCases.infoActualEmailError());
         quitDriver();
     }

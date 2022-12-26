@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class ContactPageCases extends ContactPageLocator{
@@ -19,6 +20,8 @@ public class ContactPageCases extends ContactPageLocator{
     }
 
     public void incorrectEmailInformation() {
+
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         scrollOn(contactButtonLocator);
         clickOnJSE(contactButtonLocator);
@@ -47,6 +50,8 @@ public class ContactPageCases extends ContactPageLocator{
 
 
     public void sucessfullContact() {
+
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         scrollOn(contactButtonLocator);
         clickOnJSE(contactButtonLocator);

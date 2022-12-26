@@ -25,7 +25,7 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
     private RegisterModel register;
 
     @Dado("que el usuario navegó hasta la sección de registro")
-    public void queElUsuarioNavegoHastaLaSeccionDeRegistro() {
+    public void navegarHastaRegistro() {
         try{
             setUpLog4j2();
             setUpDriver(DEMO_WEB_SHOP_REGISTER_URL.getValue());
@@ -56,7 +56,7 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
         }
 
         @Cuando("el usuario ingrese todos los datos")
-        public void ingresarDatos () {
+        public void ingresarDatos() {
             try{
                 registerModel();
                 registerPageCases=new RegisterPageCases(driver,register);

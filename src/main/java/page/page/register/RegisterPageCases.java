@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class RegisterPageCases extends RegisterPageLocator {
 
@@ -21,6 +22,8 @@ public class RegisterPageCases extends RegisterPageLocator {
 
     }
     public void unSuccesfullRegisterKeyError(){
+
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         scrollOn(genderLocator);
         clickOnJSE(genderLocator);
@@ -56,6 +59,8 @@ public class RegisterPageCases extends RegisterPageLocator {
 
 
     public void succesfullRegister() {
+
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         scrollOn(genderLocator);
         clickOnJSE(genderLocator);

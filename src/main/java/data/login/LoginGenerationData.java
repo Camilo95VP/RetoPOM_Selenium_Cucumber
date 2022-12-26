@@ -1,8 +1,7 @@
 package data.login;
 
 import com.github.javafaker.Faker;
-import model.register.RegisterModel;
-import page.page.login.LoginModel;
+import model.login.LoginModel;
 
 import java.util.Locale;
 
@@ -12,7 +11,7 @@ public class LoginGenerationData {
         Faker fk= Faker.instance(new Locale("en-EN"));
         LoginModel login=new LoginModel();
         login.setEmail(fk.internet().emailAddress().trim());
-        login.setContraseña(fk.internet().password(7,10).trim());
+        login.setPassword(fk.internet().password(7,10).trim());
         return login;
     }
 }
