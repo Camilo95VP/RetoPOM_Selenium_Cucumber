@@ -1,5 +1,6 @@
 package page.page.register;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -42,6 +43,12 @@ public class RegisterPageLocator extends CommonActionsInPages {
 
     @FindBy(xpath="//span[@for='ConfirmPassword']")
     protected WebElement alertMSGLocator;
+
+    @FindBy(xpath = "//div[@class='result']")
+    protected WebElement alertSuccessfulRegister;
+
+    @FindBy(xpath="//input[@id='gender-male']")
+    protected WebElement gender;
 
     public RegisterPageLocator(WebDriver driver) {
         super(driver);

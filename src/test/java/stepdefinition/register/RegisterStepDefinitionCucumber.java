@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import static util.Message.MESSAGE_KEY_ERROR;
 import static util.Message.MESSAGE_REGISTER_SUCCESFULL;
-import static util.Message.MESSAGE_REGISTER_UNSUCESSFULL;
 import static util.Url.DEMO_WEB_SHOP_REGISTER_URL;
 
 public class RegisterStepDefinitionCucumber extends SetupWebUI {
@@ -37,8 +36,8 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
         }
     }
 
-        @Cuando("el usuario ingrese todos los datos,con claves diferentes, acepte terminos y condiciones y confirme la acción")
-        public void elUsuarioIngreseTodosLosDatosConClavesDiferentesAcepteTerminosYCondicionesYConfirmeLaAccion () {
+        @Cuando("el usuario ingrese todos los datos con claves diferentes")
+        public void ingresarClavesErroneas () {
             try{
                 register=registerModel();
                 registerPageCases=new RegisterPageCases(driver,register);
@@ -51,17 +50,17 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
             }
         }
         @Entonces("el sistema mostrará un mensaje indicando que las claves no coinciden")
-        public void elSistemaMostraraUnMensajeIndicandoQueLasClavesNoCoinciden () {
+        public void mostrarMensajeClavesErroneas () {
             Assertions.assertEquals(infoExpectedKeyError(),registerPageCases.infoActualKeyError());
             quitDriver();
         }
 
-        @Cuando("el usuario ingrese todos los datos pero no acepte términos y condiciones y confirme la acción")
-        public void elUsuarioIngreseTodosLosDatosPeroNoAcepteTerminosYCondicionesYConfirmeLaAccion () {
+        @Cuando("el usuario ingrese todos los datos")
+        public void ingresarDatos () {
             try{
                 registerModel();
                 registerPageCases=new RegisterPageCases(driver,register);
-                registerPageCases.unsuccesfullRegister();
+                registerPageCases.succesfullRegister();
 
             }catch (Exception e){
                 quitDriver();
@@ -69,9 +68,9 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
                 LOGGER.error(e.getMessage(), e);
             }
         }
-        @Entonces("el sistema mostrará un mensaje indicando que se deben aceptar los términos y condiciones")
-        public void elSistemaMostraraUnMensajeIndicandoQueSeDebenAceptarLosTerminosYCondiciones () {
-            Assertions.assertEquals(infoExpectedUnsuccesful(),registerPageCases.infoActualUnsucessful());
+        @Entonces("el sistema mostrará un mensaje indicando que se realizo un registro exitoso")
+        public void mostrarMensajeRegistroExitoso () {
+            Assertions.assertEquals(infoExpectedSuccesful(),registerPageCases.infoActualSucessful());
             quitDriver();
         }
 
@@ -86,7 +85,7 @@ public class RegisterStepDefinitionCucumber extends SetupWebUI {
         return infoExpected;
     }
 
-    public ArrayList<String> infoExpectedUnsuccesful(){
+    public ArrayList<String> infoExpectedSuccesful(){
         ArrayList<String> infoExpected=new ArrayList<>();
         infoExpected.add(MESSAGE_REGISTER_SUCCESFULL.getValue());
         return infoExpected;

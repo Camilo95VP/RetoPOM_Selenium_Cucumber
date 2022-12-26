@@ -1,6 +1,8 @@
 package setup;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -40,6 +42,7 @@ public class SetupWebUI {
     protected void setUpLog4j2(){
         PropertyConfigurator.configure(USER_DIR.value()+LOG4J_PROPERTIES_FILE_PATH.getValue());
     }
+    @AfterEach
     protected void quitDriver(){
         driver.quit();
     }

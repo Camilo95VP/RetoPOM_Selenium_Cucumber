@@ -8,12 +8,15 @@
     Dado que el usuario navegó hasta el home principal del sitio web
 
   @Regresion
-  Escenario: Ingreso fallido por email y contraseña vacios
+  Escenario: Ingreso fallido por email erroneo
     Cuando el usuario navegue a la sección Ingresar, no suminstre los datos y confirme la acción
     Entonces el sistema mostrará indicando que debe ingresar el email y contraseña
 
   @Regresion
-  Escenario: Ingreso de usuario fallido
-    Cuando  Cuando el usuario navegue a la sección Ingresar, suministre los datos incorrectos y confirme la acción
-    Entonces el sistema mostrará un mensaje de ingreso fallido
+  Esquema del escenario: : Ingreso de usuario exitoso
+    Cuando  Cuando el usuario navegue a la sección Ingresar, suministre el "<email>" "<contraseña>"
+    Entonces el sistema mostrará que se realizo el inicio exitosamente
+    Ejemplos:
+    |email|contraseña|
+    |manuel@gmail.com|123456|
 

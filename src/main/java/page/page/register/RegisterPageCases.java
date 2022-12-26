@@ -1,7 +1,6 @@
 package page.page.register;
 
 import model.register.RegisterModel;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,7 +24,7 @@ public class RegisterPageCases extends RegisterPageLocator {
 
         scrollOn(genderLocator);
         clickOnJSE(genderLocator);
-        clickOnBy(By.xpath("//input[@id='gender-male']"));
+        clickOn(gender);
 
         scrollOn(nameLocator);
         clearOn(nameLocator);
@@ -50,17 +49,17 @@ public class RegisterPageCases extends RegisterPageLocator {
         scrollOn(btnSubmitLocator);
         clickOnJSE(btnSubmitLocator);
 
-        WebDriverWait wdw=new WebDriverWait(driver,120);
+        WebDriverWait wdw=new WebDriverWait(driver,10);
         wdw.until(ExpectedConditions.visibilityOf(alertMSGLocator));
 
     }
 
 
-    public void unsuccesfullRegister() {
+    public void succesfullRegister() {
 
         scrollOn(genderLocator);
         clickOnJSE(genderLocator);
-        clickOnBy(By.xpath("//input[@id='gender-male']"));
+        clickOn(gender);
 
         scrollOn(nameLocator);
         clearOn(nameLocator);
@@ -85,8 +84,8 @@ public class RegisterPageCases extends RegisterPageLocator {
         scrollOn(btnSubmitLocator);
         clickOnJSE(btnSubmitLocator);
 
-        WebDriverWait wdw=new WebDriverWait(driver,120);
-        wdw.until(ExpectedConditions.visibilityOf(alertMSGLocator));
+        WebDriverWait wdw=new WebDriverWait(driver,10);
+        wdw.until(ExpectedConditions.visibilityOf(alertSuccessfulRegister));
     }
 
 
@@ -97,7 +96,9 @@ public class RegisterPageCases extends RegisterPageLocator {
         return infoActual;
     }
 
-    public List<String> infoActualUnsucessful(){
-        return infoActualKeyError();
+    public List<String> infoActualSucessful(){
+        ArrayList<String> infoActual=new ArrayList<>();
+        infoActual.add(alertSuccessfulRegister.getText());
+        return infoActual;
     }
 }

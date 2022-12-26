@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import page.page.contact.ContactPageCases;
 import setup.SetupWebUI;
 
-import java.security.NoSuchAlgorithmException;
+
 import java.util.ArrayList;
 
 import static util.Message.MESSAGE_CONTACT_SUCCESFULL;
